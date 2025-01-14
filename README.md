@@ -11,7 +11,7 @@ You can change the ports, if you need to change port 80, you need to change it i
 ## 4. Start Docker-compose
 `docker-compose up -d`
 ## 5. Registration runner in gitlab
-go to your gitlab domain `http://domain.com/admin/runners` \
+go to your gitlab domain `http://gitlab.domain.com/admin/runners` \
 click `New instance runner` \
 click `Run untagged jobs`\
 click `Create runner`\
