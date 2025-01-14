@@ -10,16 +10,17 @@ You need to change the password, domain.
 You can change the ports, if you need to change port 80, you need to change it in docker-compose
 ## 4. Start Docker-compose
 `docker-compose up -d`
-## 5. Registration runner
+## 5. Registration runner in gitlab
 go to your gitlab domain `http://domain.com/admin/runners` \
 click `New instance runner` \
 click `Run untagged jobs`\
 click `Create runner`\
-use command `docker exec -it gitlab-runner gitlab-runner register` in terminal \
+## 6. Registration runner in terminal
+`docker exec -it gitlab-runner gitlab-runner register` \
 copy your url from step 1(gitlab) and paste in terminal \
 copy your token from step 1(gitlab) and paste in terminal \
 set the name of the runner \
-select `shell` 
+`shell` 
 
 ### gitlab/gitlab-runner/regestry-gitlab ready 
 
