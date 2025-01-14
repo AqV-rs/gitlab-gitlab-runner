@@ -17,9 +17,9 @@ click `Run untagged jobs`\
 click `Create runner`\
 ## 6. Registration runner in terminal
 `docker exec -it gitlab-runner gitlab-runner register` \
-copy your url from step 1(gitlab) and paste in terminal \
-copy your token from step 1(gitlab) and paste in terminal \
-set the name of the runner \
+`gitlab.domain.local` copy your url from step 1(gitlab) and paste in terminal \
+`svdvsadv23r32asvsvs` copy your token from step 1(gitlab) and paste in terminal \
+`main-runner` set the name of the runner \
 `shell` 
 
 ### gitlab/gitlab-runner/regestry-gitlab ready 
