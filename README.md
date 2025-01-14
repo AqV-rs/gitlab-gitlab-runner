@@ -19,7 +19,7 @@ use command `docker exec -it gitlab-runner gitlab-runner register` in terminal \
 copy your url from step 1(gitlab) and paste in terminal \
 copy your token from step 1(gitlab) and paste in terminal \
 set the name of the runner \
-select `shell` \
+select `shell` 
 
 ### gitlab/gitlab-runner/regestry-gitlab ready 
 
