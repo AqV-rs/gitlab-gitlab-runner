@@ -1,0 +1,61 @@
+version: "3.9"
+
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    container_name: gitlab
+    hostname: "${GITLAB_HOSTNAME}"
+    restart: unless-stopped
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://${GITLAB_HOSTNAME}'
+        gitlab_rails['gitlab_shell_ssh_port'] = ${GITLAB_SSH_PORT}
+        gitlab_rails['initial_root_password'] = '${GITLAB_ROOT_PASSWORD}'
+        # GitLab Registry Configuration
+        registry_external_url 'http://${REGISTRY_HOSTNAME}'
+        gitlab_rails['registry_enabled'] = true
+        registry['enable'] = true
+        registry['external_url'] = 'http://${REGISTRY_HOSTNAME}'
+        registry['log_level'] = 'info'
+        registry['cache'] = { 'blobdescriptor' => 'inmemory' }
+        registry['delete'] = { 'enabled' => true }
+    ports:
+      - "80:80"
+      - "${GITLAB_SSH_PORT}:22"
+      - "${REGISTRY_PORT}:${REGISTRY_PORT}"
+      - "5000:5000" # Port for GitLab Registry
+    volumes:
+      - ./data/docker/gitlab/etc/gitlab:/etc/gitlab
+      - ./data/docker/gitlab/var/opt/gitlab:/var/opt/gitlab
+      - ./data/docker/gitlab/var/log/gitlab:/var/log/gitlab
+      - ./data/docker/gitlab/var/opt/gitlab/registry:/var/opt/gitlab/registry # Storage for Registry
+    networks:
+      gitlab_net:
+        ipv4_address: 192.168.4.2
+    extra_hosts:
+      - "${GITLAB_HOSTNAME}:127.0.0.1"
+      - "${REGISTRY_HOSTNAME}:127.0.0.1"
+
+  gitlab-runner:
+    image: gitlab/gitlab-runner:latest
+    container_name: gitlab-runner
+    restart: unless-stopped
+    volumes:
+      - gitlab-runner-config:/etc/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      gitlab_net:
+        ipv4_address: 192.168.4.4
+    extra_hosts:
+      - "${GITLAB_HOSTNAME}:192.168.4.2"
+      - "${REGISTRY_HOSTNAME}:192.168.4.2"
+
+networks:
+  gitlab_net:
+    ipam:
+      config:
+        - subnet: "192.168.4.0/24"
+
+volumes:
+  gitlab-runner-config:
+
