@@ -1,4 +1,4 @@
-# gitlab-gitlab-runner
+# gitlab/gitlab-runner/regestry-gitlab
 Instructions for launching gitlab, gitlab runner, regestry gitlab
 ## 1. clone repository
 `git clone https://github.com/AqV-rs/gitlab-gitlab-runner.git`
