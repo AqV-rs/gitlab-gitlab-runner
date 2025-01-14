@@ -3,7 +3,7 @@ Instructions for launching gitlab, gitlab runner, regestry gitlab
 ## 1. clone repository
 `git clone https://github.com/AqV-rs/gitlab-gitlab-runner.git`
 ## 2. Preparing the file structure:
-`cd gitlab-gitlab-runner/`
+`cd gitlab-gitlab-runner/` \
 `mkdir -p ./data/docker/gitlab/{var/opt/gitlab,var/log/gitlab,etc/gitlab-runner,var/run/docker.sock}`
 ## 3. Change .env
 `vim .env`
