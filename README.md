@@ -8,7 +8,7 @@ Instructions for launching gitlab, gitlab runner, regestry gitlab
 ## 3. Change .env
 `vim .env`
 You need to change the password, domain.
-You can change the ports, if you need to change port 80, you need to change it in docker-compose
+You can change the ports, if you need to change port 80, change it in docker-compose
 ## 4. Start Docker-compose
 `docker-compose up -d`
 ## 5. Registration runner in gitlab
