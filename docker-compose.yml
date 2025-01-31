@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   gitlab:
-    image: gitlab/gitlab-ce:latest
+    image: gitlab/gitlab-ce:17.8.0-ce.0
     container_name: gitlab
     hostname: "${GITLAB_HOSTNAME}"
     restart: unless-stopped
@@ -37,7 +37,7 @@ services:
       - "${REGISTRY_HOSTNAME}:127.0.0.1"
 
   gitlab-runner:
-    image: gitlab/gitlab-runner:latest
+    image: gitlab/gitlab-runner:alpine3.18-bleeding
     container_name: gitlab-runner
     restart: unless-stopped
     volumes:
